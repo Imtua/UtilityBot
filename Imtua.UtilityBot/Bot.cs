@@ -46,9 +46,9 @@ namespace Imtua.UtilityBot
         {
             var errorMessage = exception switch
             {
-                ApiRequestException apiRequestException 
+                ApiRequestException apiRequestException
                 => $"Telegram API Error:\n[{apiRequestException.ErrorCode}]\n{apiRequestException.Message}",
-                _ =>exception.ToString()
+                _ => exception.ToString()
             };
             Console.WriteLine(errorMessage);
 

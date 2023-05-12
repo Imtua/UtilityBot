@@ -29,13 +29,12 @@ namespace Imtua.UtilityBot.Controllers
                     await _telegramClient.SendTextMessageAsync(callBackQuery.From.Id,
                         $"Отправьте сообщение для получения его длинны", cancellationToken: ct);
                     break;
-
+                
                 case "Sum":
                     await _telegramClient.SendTextMessageAsync(callBackQuery.From.Id,
                         $"Отправьте ряд чисел через пробел для получения его суммы", cancellationToken: ct);
                     break;
             }
-
         }
     }
 }

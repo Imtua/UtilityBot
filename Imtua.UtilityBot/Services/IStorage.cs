@@ -5,5 +5,6 @@ namespace Imtua.UtilityBot.Services
     public interface IStorage
     {
         Session GetSession(long chatId);
+        void ClearSession();
     }
 }

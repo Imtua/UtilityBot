@@ -19,9 +19,13 @@ namespace Imtua.UtilityBot.Services
                 return _sessions[sessionId];
             }
 
-            var newSession = new Session() { BotFunction = "Length" };
+            var newSession = new Session() { BotFunction = "Not selected" };
             _sessions.TryAdd(sessionId, newSession);
             return newSession;
+        }
+        public void ClearSession()
+        {
+            _sessions.Clear();
         }
     }
 }
