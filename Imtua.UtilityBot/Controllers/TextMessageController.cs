@@ -14,7 +14,7 @@ namespace Imtua.UtilityBot.Controllers
 
         public async Task Handle(Message message, CancellationToken ct)
         {
-            Console.WriteLine($"Получено сообщение от пользователя #{message.Chat.Id} - {message.Chat.FirstName} {message.Chat.LastName}:\n" +
+            Console.WriteLine($"Получено сообщение от пользователя @{message.Chat.Username}: " +
                 $"'{message.Text}'");
             await _telegramClient.SendTextMessageAsync(message.Chat.Id, $"Получено сообщение", cancellationToken: ct);
         }

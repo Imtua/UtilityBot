@@ -14,8 +14,7 @@ namespace Imtua.UtilityBot.Controllers
 
         public async Task Handle(Message message, CancellationToken ct)
         {
-            Console.WriteLine($"Пользователь #{message.Chat.Id} - {message.Chat.FirstName} {message.Chat.LastName}" +
-                $" пытается отправить сообщение неподдерживаемого типа");
+            Console.WriteLine($"Пользователь @{message.Chat.Username} пытается отправить сообщение неподдерживаемого типа");
             await _telegramClient.SendTextMessageAsync(message.Chat.Id, $"Неправильный ввод", cancellationToken: ct);
         }
     }

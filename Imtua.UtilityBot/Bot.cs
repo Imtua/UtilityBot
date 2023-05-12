@@ -15,9 +15,15 @@ namespace Imtua.UtilityBot
         private InlineKeyboardController _inlineKeyboardController;
         private TextMessageController _textMessageController;
 
-        public Bot(ITelegramBotClient telegramBotClient)
+        public Bot(ITelegramBotClient telegramBotClient,
+            DefaultMessageController defaultMessageController,
+            InlineKeyboardController inlineKeyboardController,
+            TextMessageController textMessageController)
         {
             _telegramBotClient = telegramBotClient;
+            _defaultMessageController = defaultMessageController;
+            _inlineKeyboardController = inlineKeyboardController;
+            _textMessageController = textMessageController;
         }
 
         async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, CancellationToken ct)

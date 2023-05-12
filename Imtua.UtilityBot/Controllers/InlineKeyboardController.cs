@@ -14,8 +14,8 @@ namespace Imtua.UtilityBot.Controllers
 
         public async Task Handle(CallbackQuery? callBackQuery, CancellationToken ct)
         {
-            Console.WriteLine($"Нажатие на кнопку от пользователя #{callBackQuery.From.Id} - {callBackQuery.From.FirstName} {callBackQuery.From.LastName}");
-            await _telegramClient.SendTextMessageAsync(callBackQuery.From.Id, $"Вы нажали на кнопку", cancellationToken: ct)
+            Console.WriteLine($"Нажатие на кнопку от пользователя @{callBackQuery.From.Username}");
+            await _telegramClient.SendTextMessageAsync(callBackQuery.From.Id, $"Вы нажали на кнопку", cancellationToken: ct);
         }
     }
 }
