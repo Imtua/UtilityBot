@@ -4,6 +4,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Telegram.Bot;
 using Imtua.UtilityBot;
 using Imtua.UtilityBot.Controllers;
+using Imtua.UtilityBot.Services;
+using Imtua.UtilityBot.Configurations;
 
 internal class Program
 {
@@ -19,12 +21,25 @@ internal class Program
 
     static void ConfigureServices(IServiceCollection services)
     {
+        var appSettings = BuildAppSettings();
+        services.AddSingleton(BuildAppSettings);
+
         services.AddTransient<DefaultMessageController>();
         services.AddTransient<InlineKeyboardController>();
         services.AddTransient<TextMessageController>();
 
+        services.AddSingleton<IStorage, MemoryStorage>();
+
         services.AddSingleton<ITelegramBotClient>(provider =>
-            new TelegramBotClient("6164423544:AAGfePpzhaBd5kwATtSVpYXHJwb0_Xpccr4"));
+            new TelegramBotClient(appSettings.BotToken));
         services.AddHostedService<Bot>();
+    }
+    
+    static AppSettings BuildAppSettings()
+    {
+        return new AppSettings
+        {
+            BotToken = "6164423544:AAGfePpzhaBd5kwATtSVpYXHJwb0_Xpccr4"
+        };
     }
 }
